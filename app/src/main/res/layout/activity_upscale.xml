@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Upscale Image"
+                android:textColor="@color/text_white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnSettings"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_manage"
+                android:background="@drawable/bg_card_ripple"
+                android:contentDescription="Pengaturan" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imagePreview"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop"
+            android:background="@color/card_dark"
+            android:contentDescription="Preview gambar" />
+
+        <LinearLayout
+            android:id="@+id/fileInfoBox"
+            style="@style/RoundedCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtFileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:ellipsize="middle"
+                android:singleLine="true"
+                android:text="nama_file.jpg" />
+
+            <TextView
+                android:id="@+id/txtInputSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_gray"
+                android:textSize="13sp"
+                android:layout_marginTop="6dp"
+                android:text="Masukan: -" />
+
+            <TextView
+                android:id="@+id/txtOutputSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent_blue"
+                android:textSize="13sp"
+                android:layout_marginTop="2dp"
+                android:text="Keluaran: -" />
+
+            <TextView
+                android:id="@+id/txtFileSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_gray"
+                android:textSize="13sp"
+                android:layout_marginTop="2dp"
+                android:text="Ukuran &amp; format: -" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Langkah 1"
+            android:textColor="@color/text_gray"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+
+        <Button
+            android:id="@+id/btnPickImage"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:text="Pilih Gambar"
+            android:textColor="@color/text_white"
+            android:background="@drawable/bg_card_ripple" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Langkah 2 — Skala Gambar"
+            android:textColor="@color/text_gray"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:id="@+id/txtScaleValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4x"
+            android:textColor="@color/accent_blue"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <SeekBar
+            android:id="@+id/seekScale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="6"
+            android:progress="2"
+            android:progressTint="@color/accent_blue"
+            android:thumbTint="@color/accent_blue" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="2x"
+                android:textColor="@color/text_gray"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="8x"
+                android:textColor="@color/text_gray"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Langkah 3 — Mode Proses"
+            android:textColor="@color/text_gray"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+
+        <RadioGroup
+            android:id="@+id/radioMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <RadioButton
+                android:id="@+id/modeFast"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cepat"
+                android:textColor="@color/text_white" />
+
+            <RadioButton
+                android:id="@+id/modeStandard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Standar"
+                android:textColor="@color/text_white"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/modeMax"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Maksimal"
+                android:textColor="@color/text_white" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Langkah 4 — Format Keluaran"
+            android:textColor="@color/text_gray"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+
+        <RadioGroup
+            android:id="@+id/radioFormat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <RadioButton
+                android:id="@+id/formatJpegHigh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="JPEG Kualitas Tinggi — ideal untuk foto asli"
+                android:textColor="@color/text_white"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/formatJpegLow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="JPEG Hemat — ukuran file terkecil"
+                android:textColor="@color/text_white" />
+
+            <RadioButton
+                android:id="@+id/formatPng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PNG — kualitas maksimal, file besar"
+                android:textColor="@color/text_white" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pilih gambar untuk mulai"
+            android:textColor="@color/text_gray"
+            android:textSize="13sp"
+            android:layout_marginTop="24dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:max="100"
+            android:visibility="gone"
+            android:progressTint="@color/accent_blue" />
+
+        <Button
+            android:id="@+id/btnUpscale"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="20dp"
+            android:text="Upscale"
+            android:textColor="@color/text_white"
+            android:textStyle="bold"
+            android:background="@drawable/bg_button_primary"
+            android:enabled="false" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:text="Batalkan Proses"
+            android:textColor="#FF6B6B"
+            android:background="@drawable/bg_card_ripple"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:text="Simpan ke Galeri"
+            android:textColor="@color/text_white"
+            android:background="@drawable/bg_card_ripple"
+            android:enabled="false" />
+
+    </LinearLayout>
+</ScrollView>
