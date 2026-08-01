@@ -22,7 +22,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import kotlinx.coroutines.CoroutineScope
@@ -82,10 +81,6 @@ class UpscaleActivity : AppCompatActivity() {
         uri?.let { loadImage(it) }
     }
 
-    private val notifPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { }
-
     private val galleryPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { granted ->
@@ -117,7 +112,6 @@ class UpscaleActivity : AppCompatActivity() {
         txtFileSize = findViewById(R.id.txtFileSize)
 
         createNotificationChannel()
-        requestNotificationPermissionIfNeeded()
         requestGalleryPermission()
 
         seekScale.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -146,15 +140,6 @@ class UpscaleActivity : AppCompatActivity() {
         else Manifest.permission.READ_EXTERNAL_STORAGE
         if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
             galleryPermissionLauncher.launch(permission)
-        }
-    }
-
-    private fun requestNotificationPermissionIfNeeded() {
-        if (Build.VERSION.SDK_INT >= 33) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
-                != PackageManager.PERMISSION_GRANTED) {
-                notifPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-            }
         }
     }
 
