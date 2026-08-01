@@ -1,7 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.SuperUpscaler" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">#6750A4</item>
-        <item name="colorPrimaryVariant">#4F378B</item>
-        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimary">@color/accent_blue</item>
+        <item name="colorPrimaryVariant">@color/accent_blue</item>
+        <item name="colorOnPrimary">@color/text_white</item>
+        <item name="colorSecondary">@color/accent_blue</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="android:colorControlHighlight">@color/accent_blue</item>
+    </style>
+
+    <style name="RoundedCard">
+        <item name="android:background">@drawable/bg_card_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:padding">16dp</item>
     </style>
 </resources>
