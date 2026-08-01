@@ -31,8 +31,6 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.tensorflow.lite.Interpreter
-import org.tensorflow.lite.gpu.CompatibilityList
-import org.tensorflow.lite.gpu.GpuDelegate
 import java.io.FileInputStream
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
@@ -63,7 +61,6 @@ class UpscaleActivity : AppCompatActivity() {
     private var originalBitmap: Bitmap? = null
     private var resultBitmap: Bitmap? = null
     private var interpreter: Interpreter? = null
-    private var gpuDelegate: GpuDelegate? = null
     private var currentFileName: String = "gambar"
     private var upscaleJob: Job? = null
 
@@ -168,15 +165,6 @@ class UpscaleActivity : AppCompatActivity() {
                     )
                     val options = Interpreter.Options()
                     options.setNumThreads(4)
-                    try {
-                        val compatList = CompatibilityList()
-                        if (compatList.isDelegateSupportedOnThisDevice) {
-                            gpuDelegate = GpuDelegate()
-                            options.addDelegate(gpuDelegate)
-                        }
-                    } catch (e: Exception) {
-                        gpuDelegate = null
-                    }
                     interpreter = Interpreter(modelBuffer, options)
                     true
                 } catch (e: Exception) {
@@ -448,6 +436,5 @@ class UpscaleActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         interpreter?.close()
-        gpuDelegate?.close()
     }
 }
